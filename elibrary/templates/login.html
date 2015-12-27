@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% if not user.is_authenticated %}
+	<div class="userform">
+    <form method="post" action="/login/" class="post-form">
+        {% csrf_token %}
+        <label for="u">Username:</label>
+        <input type="text" name ="username" id = 'u'/>
+        <br/>
+        <label for="p">Password:</label>
+        <input type="password" name ="pswd" id = 'p'/>
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    </div>
+    {% else %}
+    	<h3>You're already a registered user.</h3>    
+    {% endif %}
+
+{% endblock %}

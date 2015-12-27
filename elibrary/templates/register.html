@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% if not user.is_authenticated %}
+    <div class = 'userform'>
+        <form method="post" class = 'post-form'>{% csrf_token %}
+         {{user_form.as_p}}
+         {{users_form.as_p}}
+            <button type="submit" class="save btn btn-default">Register</button>
+        </form>
+    </div>    
+    {% else %}
+    	<h3>You're already a registered user.</h3>    
+    {% endif %}
+{% endblock %}

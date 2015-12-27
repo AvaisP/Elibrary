@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load librarytags %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+    <div>
+        <h3>
+            List of books:
+        </h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Number of copies</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    {% if book.3 > 0 %}
+                        <tr>
+                        <td>{{ book.0 }}</td>
+                        <td>{{ book.1 }}</td>
+                        <td>{{ book.2 }}</td>
+                        <td>{{ book.3 }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>    
+    {% else %}
+    	<h3>You must login to continue.</h3>    
+    {% endif %}
+{% endblock %}
