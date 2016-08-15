@@ -19,10 +19,24 @@ from elibrary import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.testview, name="testview"),
+    url(r'^$', views.login_library, name = "home"),
+    url(r'^history/$', views.history, name = "history"),
     url(r'^login/$',views.login_library ,name = 'login'),
     url(r'^logout/$',views.logout_library ,name = 'logout'),
     url(r'^register/$',views.register , name ='new_user'),
     url(r'^allbooks/$',views.allbooks , name ='allbooks'),
     url(r'^availablebooks/$',views.availbooks , name ='availbooks'),
+    url(r'^bookissue/(\d{1,4})/$', views.issueBookPage, name = 'issuebooks'),
+    url(r'^bookrequest/(\d{1,4})/$', views.requestbooks, name = 'requestbooks'),
+    url(r'^bookissue/(\d{1,4})/issueto/(\d{10,13})/$', views.issueToUser, name = 'issueToUser'),
+    url(r'^bookissue/(\d{1,4})/decline/(\d{10,13})/$', views.declineIssueToUser, name = 'declineIssueToUser'),
+    url(r'^bookissue/(\d{1,4})/returnedby/(\d{10,13})/$', views.returnBook, name = 'returnBook'),
+    #url (r'^addbook/(\d{1,4})/$', views.addBook, name = "addBook"),
+    url(r'^addnewbook/$', views.addNewBook, name = "addnewbook"),
+    #url (r'^removeCopy/(\d{1,4})/$', views.removeCopy, name = "removeCopy"),
+    url (r'^removebook/(\d{1,4})/$', views.removeBook, name = "removeBook"),
+    url (r'^editbook/(\d{1,4})/$', views.editBook, name = "editBook"),
+    url(r'^search/$', views.searchBook, name = "searchBook")
+
 ]
+
